@@ -26,6 +26,7 @@
 		  </table>
 		</div>
 		<div id="DivCorpo" align="left">
+			<div id="Atendimento" style="display:none;"></div>
 			<div id="DivCorpoTopo"><img src="imagens/CorpoTopo.gif" /></div>
 			<div id="DivCorpoConteudo">
 				<div id="DivCorpoIcones">
@@ -38,15 +39,17 @@
 						<img class="Icone" src="imagens/IconeProfissao.gif" alt="Profiss&atilde;o" onclick="AbrirPaginaManutencao(this);" onmouseover="IndicaIcone(this);" id="Profissao"/>
 						<img class="Icone" src="imagens/IconeDomicilio.gif" alt="Domic&iacute;lio" onclick="AbrirPaginaManutencao(this);" onmouseover="IndicaIcone(this);" id="Domicilio"/>
 						<img class="Icone" src="imagens/IconeFila.gif" alt="Fila" onclick="AbrirPaginaManutencao(this);" onmouseover="IndicaIcone(this);" id="Fila"/>
-						<img class="Icone" src="imagens/MenuSeparador.gif" />
+						<img src="imagens/MenuSeparador.gif" />
 					</div>
 					<div id="DivCorpoMenuDescricao"> </div>
 				</div>
 				<div>
 					<img src="imagens/MenuSeparador_1.gif" />
 				</div>
-				<div id="DivCorpoLateralEsquerda"></div>
-				<div id="DivCorpoLateralDireita"></div>
+				<div id="DivCorpoLateralEsquerda" style="display:none"></div>
+				<div id="DivCorpoLateralDireita" style="display:none"></div>
+				<div id="DivFilaCabecalho" style="display:none"></div>
+				<div id="DivFilaConteudo" style="display:none"></div>
 			</div>
 		</div>
 	</div>

@@ -1,42 +1,27 @@
 package modelo;
-/**
- *<b>Autor: </b> Rafael Kloss<br>
- *<b>Data: </b> 11/10/2006<br>
- *<b>:Modificado: </b><br> 
- *<b>Descrição: </b>Esta classe é a classe pai de todas as classes de atendimento <br>
- *<b>todos os métodos genéricos e comuns a atendimentos estão aqui.<br>	 	
-*/
-abstract class Atendimento{	
+
+public class Atendimento{	
 	private int cdAtendimento;
 	private Paciente paciente;	
 	private Profissional profissional;	
 	private Estabelecimento estabelecimento;	
 	private String dtAtendimento = "";
 	private String dsAtendimento = "";
-	
+	private Procedimento procedimento;
+	private String tpConsulta;
+	private String dsQueixa;
+	private Cid cid;
 	public int getCdAtendimento() {
 		return cdAtendimento;
 	}
 	public void setCdAtendimento(int cdAtendimento) {
 		this.cdAtendimento = cdAtendimento;
-	}	
-	public Estabelecimento getEstabelecimento() {
-		return estabelecimento;
 	}
-	public void setEstabelecimento(Estabelecimento estabelecimento) {
-		this.estabelecimento = estabelecimento;
+	public Cid getCid() {
+		return cid;
 	}
-	public Paciente getPaciente() {
-		return paciente;
-	}
-	public void setPaciente(Paciente paciente) {
-		this.paciente = paciente;
-	}	
-	public Profissional getProfissional() {
-		return profissional;
-	}
-	public void setProfissional(Profissional profissional) {
-		this.profissional = profissional;
+	public void setCid(Cid cid) {
+		this.cid = cid;
 	}
 	public String getDsAtendimento() {
 		return dsAtendimento;
@@ -49,5 +34,41 @@ abstract class Atendimento{
 	}
 	public void setDtAtendimento(String dtAtendimento) {
 		this.dtAtendimento = dtAtendimento;
-	}	
+	}
+	public Estabelecimento getEstabelecimento() {
+		return estabelecimento;
+	}
+	public void setEstabelecimento(Estabelecimento estabelecimento) {
+		this.estabelecimento = estabelecimento;
+	}
+	public Paciente getPaciente() {
+		return paciente;
+	}
+	public void setPaciente(Paciente paciente) {
+		this.paciente = paciente;
+	}
+	public Procedimento getProcedimento() {
+		return procedimento;
+	}
+	public void setProcedimento(Procedimento procedimento) {
+		this.procedimento = procedimento;
+	}
+	public Profissional getProfissional() {
+		return profissional;
+	}
+	public void setProfissional(Profissional profissional) {
+		this.profissional = profissional;
+	}
+	public String getTpConsulta() {
+		return tpConsulta;
+	}
+	public void setTpConsulta(String tpConsulta) {
+		this.tpConsulta = tpConsulta;
+	}
+	public String getDsQueixa() {
+		return dsQueixa;
+	}
+	public void setDsQueixa(String dsQueixa) {
+		this.dsQueixa = dsQueixa;
+	}
 }

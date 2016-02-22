@@ -27,7 +27,7 @@ abstract class SuperDao {
 	    res = con.conecta().executeQuery(query);		
 		return res;
 	}
-	
+
 	/**
 	 *<b>Autor: </b> Rafael Kloss<br>
 	 *<b>Data: </b> 28/08/2006<br>

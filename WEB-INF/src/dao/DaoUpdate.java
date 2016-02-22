@@ -7,6 +7,8 @@ import modelo.Domicilio;
 import modelo.Procedimento;
 import modelo.Profissional;
 import modelo.Paciente;
+import modelo.Atendimento;
+import modelo.Fila;
 
 import util.Data;
 
@@ -213,6 +215,55 @@ public class DaoUpdate extends SuperDao {
 		StringBuffer query = new StringBuffer();
 		query.append("update PACIENTE set idStatus = 'I'");
 		query.append(" where cdPaciente = "+paciente.getCdPaciente());
+		return super.executeUpdate(query.toString());
+	}
+	public int filaSalva(Fila fila) throws Exception {
+		StringBuffer query = new StringBuffer();
+		if(fila.getCdFila()>0)
+		{
+			query.append("update FILA set");
+			query.append(" cdEstabelecimento = "+fila.getEstabelecimento().getCdEstabelecimento()+",");
+			query.append(" cdPaciente = "+fila.getPaciente().getCdPaciente()+",");
+			query.append(" dtFila = '"+fila.getDtFila()+"',");
+			query.append(" idStatus = '"+fila.getIdStatus()+"'");
+			query.append(" where cdFila = "+fila.getCdFila());
+		}
+		else
+		{
+			query.append("insert into FILA");
+			query.append(" (cdFila, cdEstabelecimento, cdPaciente, dtFila, idStatus)");
+			query.append("  values");
+			query.append(" (null," + fila.getEstabelecimento().getCdEstabelecimento()+ ","+fila.getPaciente().getCdPaciente()+",'"+fila.getDtFila()+"','"+fila.getIdStatus()+"')");
+		}
+		return super.executeUpdate(query.toString());
+	}
+	public int atendimentoSalva(Atendimento atendimento) throws Exception {
+		StringBuffer query = new StringBuffer();
+		if(atendimento.getCdAtendimento()>0)
+		{
+			query.append("update ATENDIMENTO set");
+			query.append(" cdPaciente = "+atendimento.getPaciente().getCdPaciente()+",");
+			query.append(" cdEstabelecimento = "+atendimento.getPaciente().getCdPaciente()+",");
+			query.append(" cdProcedimento = "+atendimento.getProcedimento().getCdProcedimento()+",");
+			query.append(" cdProfissional = "+atendimento.getProfissional().getCdProfissional()+",");
+			query.append(" cdCid = "+atendimento.getCid().getCdCid()+",");
+			query.append(" dtAtendimento = '"+atendimento.getDtAtendimento()+"',");
+			query.append(" dsAtendimento = '"+atendimento.getDsAtendimento()+"',");
+			query.append(" tpConsulta = '"+atendimento.getTpConsulta()+"',");
+			query.append(" dsQueixa = '"+atendimento.getDsQueixa()+"',");
+			query.append(" where cdAtendimento = "+atendimento.getCdAtendimento());
+		}
+		else
+		{
+			query.append("insert into ATENDIMENTO");
+			query.append(" (cdAtendimento, cdPaciente, cdEstabelecimento, cdProcedimento, cdProfissional, cdCid, dtAtendimento, dsAtendimento, tpConsulta, dsQueixa)");
+			query.append("  values");
+			query.append(" (null," + atendimento.getPaciente().getCdPaciente() + ","+atendimento.getEstabelecimento().getCdEstabelecimento()+","+atendimento.getProcedimento().getCdProcedimento()+","+atendimento.getProfissional().getCdProfissional()+","+atendimento.getCid().getCdCid()+",'"+atendimento.getDtAtendimento()+"','"+atendimento.getDsAtendimento()+"','"+atendimento.getTpConsulta()+"','"+atendimento.getDsQueixa()+"')");
+			System.out.println("-----------------------------------------------------");
+			System.out.println(query.toString());
+			System.out.println("-----------------------------------------------------");
+
+		}
 		return super.executeUpdate(query.toString());
 	}
 }

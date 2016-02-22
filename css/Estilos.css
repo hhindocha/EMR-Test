@@ -91,6 +91,21 @@ h2
 	width: 80px;
 	padding-right: 5px;
 }
+.LabelFormularioAtendimento {
+	color: #666666;
+	text-align: right;
+	width: 200px;
+	padding-right: 5px;
+}
+.CaixaTexto {
+	font-family: "Courier New", Courier, monospace;
+	font-size: 12px;
+	color: #000000;
+	background-color: #F5F5F5;
+	height: 60px;
+	width: 245px;
+	border: 1px solid #A6A6A6;
+}
 .InputTexto {
 	font-family: "Courier New", Courier, monospace;
 	font-size: 12px;
@@ -109,7 +124,16 @@ h2
 	border: 1px solid #A6A6A6;
 	padding: 2px;
 }
-
+#Atendimento
+{
+	height: 550px;
+	width: 800px;
+	position:absolute;
+	top:120px;
+	overflow:auto;
+	padding-left: 50px;
+	background-color: #FFFFFF;
+}
 form
 {
 	margin: 0px;
@@ -123,6 +147,10 @@ form
 {
 	width: 372px;
 }
+#TabelaListagemFila
+{
+	width: 780px;
+}
 #DivPesquisaListagem
 {
 	width: 390px;
@@ -131,7 +159,7 @@ form
 }
 #DivMensagemCadastro
 {
-	width:100%;
+	width:90%;
 	font:Verdana, Arial, Helvetica, sans-serif;
 	color: #374e39;
 	background-color:#FFFFCC;

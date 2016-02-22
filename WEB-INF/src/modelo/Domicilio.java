@@ -1,6 +1,6 @@
 package modelo;
 
-public class Domicilio extends Endereco {	
+public class Domicilio {	
 	private Estabelecimento estabelecimento;
 	private int cdDomicilio = 0;
 	private String dsLogradouro = "";

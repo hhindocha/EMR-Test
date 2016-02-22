@@ -48,6 +48,18 @@ function FormularioInicio()
 			gFormCamposRequeridosNome = new Array('Nome','Domicílio','Nascimento','Telefone','Nome da mãe','Sexo','Estado');
 			gPaginaPostar = 'Cadastro.Paciente';
 			break;
+		case 'Fila':
+			gFormCampos = new Array('cdFila','dtFila','cdEstabelecimento','cdPaciente','idStatus');
+			gFormCamposRequeridos = new Array('cdEstabelecimento','cdPaciente','idStatus');
+			gFormCamposRequeridosNome = new Array('Estabelecimento','Paciente','Estado');
+			gPaginaPostar = 'Cadastro.Fila';
+			break;
+		case 'Atendimento':
+			gFormCampos = new Array('cdFila','cdProfissional','cdCid','dsQueixa','dsAtendimento','cdProcedimento','tpConsulta','dtAtendimento','tpNovoEstado');
+			gFormCamposRequeridos = new Array('cdProfissional','cdCid','dsQueixa','dsAtendimento','cdProcedimento');
+			gFormCamposRequeridosNome = new Array('Profissional','Cid','Queixa','Descrição','Procedimento');
+			gPaginaPostar = 'Cadastro.Atendimento';
+			break;
 		default:
 			alert("Essa opção do menu ainda não foi implementada!")
 	}
@@ -91,6 +103,11 @@ function FormularioAlerta(NomeDoCampo)
 function FormularioMensagemCadastro(Retorno)
 {
 	var Mensagem = '';
+	if(gPaginaAtual == 'Atendimento')
+	{
+		AbrirPaginaManutencao(RetornaObjeto('Fila'));
+		return;
+	}
 	switch (Retorno)
 	{
 		case 'cadastrado':

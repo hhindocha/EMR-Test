@@ -341,7 +341,7 @@ public static int[] brokenDate(String date)throws Exception
 		if (dia.equals("01") && mes.equals("01") && ano.equals("1900"))
 			return "";
 		
-		return (mes + "/" + dia + "/" + ano + " " + hora);
+		return (ano+ "-" + mes  + "-" + dia + " " + hora);
 	}
 
 	public String paraBDTrunc (String var) throws Exception 

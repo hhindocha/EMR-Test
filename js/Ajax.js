@@ -87,7 +87,7 @@ function PesquisaListagem(url,div,metodo,variaveis)
 function VerificaAlteracaoDeEstado_PesquisaListagem()
 {
 	if(HttpRequest_PesquisaListagem.readyState!=4){return;}
-		document.getElementById('DivPesquisaListagem').innerHTML = HttpRequest_PesquisaListagem.responseText;
+		document.getElementById(gDivPesquisaListagem).innerHTML = HttpRequest_PesquisaListagem.responseText;
 }
 
 var g_div_A = '';

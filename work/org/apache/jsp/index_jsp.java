@@ -68,6 +68,7 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t  </table>\r\n");
       out.write("\t\t</div>\r\n");
       out.write("\t\t<div id=\"DivCorpo\" align=\"left\">\r\n");
+      out.write("\t\t\t<div id=\"Atendimento\" style=\"display:none;\"></div>\r\n");
       out.write("\t\t\t<div id=\"DivCorpoTopo\"><img src=\"imagens/CorpoTopo.gif\" /></div>\r\n");
       out.write("\t\t\t<div id=\"DivCorpoConteudo\">\r\n");
       out.write("\t\t\t\t<div id=\"DivCorpoIcones\">\r\n");
@@ -80,15 +81,17 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t\t\t\t\t<img class=\"Icone\" src=\"imagens/IconeProfissao.gif\" alt=\"Profiss&atilde;o\" onclick=\"AbrirPaginaManutencao(this);\" onmouseover=\"IndicaIcone(this);\" id=\"Profissao\"/>\r\n");
       out.write("\t\t\t\t\t\t<img class=\"Icone\" src=\"imagens/IconeDomicilio.gif\" alt=\"Domic&iacute;lio\" onclick=\"AbrirPaginaManutencao(this);\" onmouseover=\"IndicaIcone(this);\" id=\"Domicilio\"/>\r\n");
       out.write("\t\t\t\t\t\t<img class=\"Icone\" src=\"imagens/IconeFila.gif\" alt=\"Fila\" onclick=\"AbrirPaginaManutencao(this);\" onmouseover=\"IndicaIcone(this);\" id=\"Fila\"/>\r\n");
-      out.write("\t\t\t\t\t\t<img class=\"Icone\" src=\"imagens/MenuSeparador.gif\" />\r\n");
+      out.write("\t\t\t\t\t\t<img src=\"imagens/MenuSeparador.gif\" />\r\n");
       out.write("\t\t\t\t\t</div>\r\n");
       out.write("\t\t\t\t\t<div id=\"DivCorpoMenuDescricao\"> </div>\r\n");
       out.write("\t\t\t\t</div>\r\n");
       out.write("\t\t\t\t<div>\r\n");
       out.write("\t\t\t\t\t<img src=\"imagens/MenuSeparador_1.gif\" />\r\n");
       out.write("\t\t\t\t</div>\r\n");
-      out.write("\t\t\t\t<div id=\"DivCorpoLateralEsquerda\"></div>\r\n");
-      out.write("\t\t\t\t<div id=\"DivCorpoLateralDireita\"></div>\r\n");
+      out.write("\t\t\t\t<div id=\"DivCorpoLateralEsquerda\" style=\"display:none\"></div>\r\n");
+      out.write("\t\t\t\t<div id=\"DivCorpoLateralDireita\" style=\"display:none\"></div>\r\n");
+      out.write("\t\t\t\t<div id=\"DivFilaCabecalho\" style=\"display:none\"></div>\r\n");
+      out.write("\t\t\t\t<div id=\"DivFilaConteudo\" style=\"display:none\"></div>\r\n");
       out.write("\t\t\t</div>\r\n");
       out.write("\t\t</div>\r\n");
       out.write("\t</div>\r\n");

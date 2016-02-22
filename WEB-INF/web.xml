@@ -9,6 +9,11 @@
     <display-name>BETA TESTE</display-name>
 
     <servlet>
+		<servlet-name>AtendimentoServlet</servlet-name>
+		<servlet-class>servlets.AtendimentoServlet</servlet-class>
+    </servlet>
+    
+    <servlet>
 		<servlet-name>CidServlet</servlet-name>
 		<servlet-class>servlets.CidServlet</servlet-class>
     </servlet>
@@ -43,7 +48,11 @@
 		<servlet-class>servlets.PacienteServlet</servlet-class>
 	</servlet>
 
-
+	<servlet>
+		<servlet-name>FilaServlet</servlet-name>
+		<servlet-class>servlets.FilaServlet</servlet-class>
+	</servlet>
+	
 	<servlet-mapping>
 		<servlet-name>PacienteServlet</servlet-name>
 		<url-pattern>*.Paciente</url-pattern>
@@ -78,6 +87,17 @@
 	<servlet-mapping>
 		<servlet-name>DomicilioServlet</servlet-name>
 		<url-pattern>*.Domicilio</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet-mapping>
+		<servlet-name>AtendimentoServlet</servlet-name>
+		<url-pattern>*.Atendimento</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>FilaServlet</servlet-name>
+		<url-pattern>*.Fila</url-pattern>
 	</servlet-mapping>
 
 </web-app>

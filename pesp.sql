@@ -34,8 +34,8 @@ CREATE TABLE /*!32312 IF NOT EXISTS*/ `atendimento` (
   `dtAtendimento` datetime default NULL,
   `dsAtendimento` text,
   `cdProcedimento` int(10) unsigned NOT NULL default '0',
-  `tpConsulta` enum('MEDICA','ENFERMAGEM') default NULL,
-  `dsQueixa` varchar(255) default NULL,
+  `tpConsulta` enum('M','E') default 'E',
+  `dsQueixa` text,
   PRIMARY KEY  (`cdAtendimento`),
   KEY `ATENDIMENTO_FKIndex2` (`cdCid`),
   KEY `ATENDIMENTO_FKIndex3` (`cdProcedimento`),
@@ -50,6 +50,27 @@ CREATE TABLE /*!32312 IF NOT EXISTS*/ `atendimento` (
 # Dumping data for table 'atendimento'
 #
 
+/*!40000 ALTER TABLE `atendimento` DISABLE KEYS;*/
+LOCK TABLES `atendimento` WRITE;
+INSERT INTO `atendimento` (`cdAtendimento`, `cdEstabelecimento`, `cdPaciente`, `cdProfissional`, `cdCid`, `dtAtendimento`, `dsAtendimento`, `cdProcedimento`, `tpConsulta`, `dsQueixa`) VALUES ('1','3','1','9','14',NULL,'as','1','E','asd'),
+	('2','3','1','9','14',NULL,'as','1','E','asd'),
+	('3','3','1','9','14',NULL,'as','1','E','asd'),
+	('4','3','2','9','14',NULL,'Descrição','1','E','Queixa'),
+	('5','3','2','9','14','2006-12-14 20:07:00','Descrição','1','E','Queixa'),
+	('6','3','2','9','14','2006-12-14 20:07:00','Descrição','1','E','Queixa'),
+	('7','3','1','9','14','2006-12-14 20:14:00','asdf','1','E','fas'),
+	('8','3','1','9','14','2006-12-14 20:16:00','Queixa Queixa Queixa Queixa Queixa Queixa Queixa Queixa Queixa Queixa Queixa Queixa Queixa Queixa ','1','E','Queixa Queixa Queixa Queixa Queixa Queixa Queixa Queixa Queixa Queixa Queixa Queixa Queixa Queixa Queixa Queixa Queixa Queixa Queixa Queixa Queixa '),
+	('9','3','1','9','14','2006-12-14 20:19:00',' Descrição Descrição Descrição Descrição Descrição Descrição Descrição Descrição Descrição Descrição Descrição Descrição Descrição Descrição Descrição Descrição Descrição Descrição Descrição','7','E',' Queixa Queixa Queixa Queixa Queixa Queixa Queixa Queixa Queixa Queixa Queixa Queixa Queixa Queixa Queixa Queixa Queixa Queixa Queixa Queixa Queixa Queixa Queixa Queixa Queixa Queixa Queixa Queixa Queixa'),
+	('10','3','1','9','14','2006-12-14 20:20:00','asdf','1','E','asdf'),
+	('11','3','1','10','14','2006-12-14 20:20:00','asd','4','E','asd'),
+	('12','3','1','9','14','2006-12-14 20:20:00','as dfsd','1','E','sadfs dfsdf'),
+	('13','3','2','9','14','2006-12-14 20:21:00',' df sdfsdf','1','M','asdf dfsdf'),
+	('14','3','2','9','14','2006-12-14 20:22:00','ds fgd','1','E','ds fsg'),
+	('15','3','2','9','14','2006-12-14 20:23:00','lllllllllll','1','E','llllllllll'),
+	('16','3','2','9','14','2006-12-14 20:27:00','asd as das dasd as das dasd as das dasd as das dasd as das dasd as das dasd as das dasd as das dasd as das dasd as das dasd as das dasd as das dasd as das dasd as das dasd as das dasd as das dasd as das d','1','E','asd as das dasd as das dasd as das dasd as das dasd as das dasd as das dasd as das dasd as das dasd as das dasd as das dasd as das dasd as das dasd as das d'),
+	('17','3','1','10','20','2006-12-14 20:53:00','foi encaminhado ao dentista','7','E','dor de dente!');
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `atendimento` ENABLE KEYS;*/
 
 
 #
@@ -71,7 +92,7 @@ CREATE TABLE /*!32312 IF NOT EXISTS*/ `cid` (
 
 /*!40000 ALTER TABLE `cid` DISABLE KEYS;*/
 LOCK TABLES `cid` WRITE;
-REPLACE INTO `cid` (`cdCid`, `dsCid`, `idStatus`) VALUES ('1','sdf','A'),
+INSERT INTO `cid` (`cdCid`, `dsCid`, `idStatus`) VALUES ('1','sdf','A'),
 	('2','Falta de fome','I'),
 	('5','s gdfg sdf gsdf','A'),
 	('6','asd','I'),
@@ -90,7 +111,9 @@ REPLACE INTO `cid` (`cdCid`, `dsCid`, `idStatus`) VALUES ('1','sdf','A'),
 	('24','Dor Anual','A'),
 	('25','Caxassada','A'),
 	('26','Ressaca Forte','A'),
-	('27','Ressaca  ou-','A');
+	('27','Ressaca  ou-','A'),
+	('28','Dor na perna','A'),
+	('29','Dor no pé','A');
 UNLOCK TABLES;
 /*!40000 ALTER TABLE `cid` ENABLE KEYS;*/
 
@@ -120,7 +143,7 @@ CREATE TABLE /*!32312 IF NOT EXISTS*/ `domicilio` (
 
 /*!40000 ALTER TABLE `domicilio` DISABLE KEYS;*/
 LOCK TABLES `domicilio` WRITE;
-REPLACE INTO `domicilio` (`cdDomicilio`, `cdEstabelecimento`, `dsLogradouro`, `dsBairro`, `dsMunicipio`, `dsEstado`, `dsTelefone`, `idStatus`) VALUES ('1','2','foi excluído, nao mostrar','asd','asd','as','asd','I'),
+INSERT INTO `domicilio` (`cdDomicilio`, `cdEstabelecimento`, `dsLogradouro`, `dsBairro`, `dsMunicipio`, `dsEstado`, `dsTelefone`, `idStatus`) VALUES ('1','2','foi excluído, nao mostrar','asd','asd','as','asd','I'),
 	('2','3','Rua divina providência','Santa quitéria','Pindamonhangaba','Pr','3221-5898','A'),
 	('3','2','Mauricio Fruet, 2450 - Ap 02 Bl 01','Cajuru','Curitiba','Pr','41 33666650','A'),
 	('4','1','Rua das Congonhas','Favela México 70','Curitiba','Pr','3221-2121','A');
@@ -151,7 +174,7 @@ CREATE TABLE /*!32312 IF NOT EXISTS*/ `estabelecimento` (
 
 /*!40000 ALTER TABLE `estabelecimento` DISABLE KEYS;*/
 LOCK TABLES `estabelecimento` WRITE;
-REPLACE INTO `estabelecimento` (`cdEstabelecimento`, `dsEstabelecimento`, `dsEndereco`, `dsMunicipio`, `dsEstado`, `dsTelefone`, `idStatus`) VALUES ('1','Unidade de Saúde Jacu','Rua pimpolho','Curitiba','Pr','3022-7711','I'),
+INSERT INTO `estabelecimento` (`cdEstabelecimento`, `dsEstabelecimento`, `dsEndereco`, `dsMunicipio`, `dsEstado`, `dsTelefone`, `idStatus`) VALUES ('1','Unidade de Saúde Jacu','Rua pimpolho','Curitiba','Pr','3022-7711','I'),
 	('2','Unidade de Saúde Teste','Rua Tamoios nº 42','Curitiba','PR','3022-2222','A'),
 	('3','Unidade de Saúde Atenas','Rua anitas de barros','Curitiba','Pr','30022122','A');
 UNLOCK TABLES;
@@ -187,7 +210,7 @@ CREATE TABLE /*!32312 IF NOT EXISTS*/ `fila` (
   `cdEstabelecimento` int(10) unsigned NOT NULL default '0',
   `cdPaciente` int(10) unsigned NOT NULL default '0',
   `dtFila` datetime NOT NULL default '0000-00-00 00:00:00',
-  `idStatus` enum('ENFERMAGEM','MEDICO','CONCLUIDO') NOT NULL default 'ENFERMAGEM',
+  `idStatus` enum('E','M','C') NOT NULL default 'E',
   PRIMARY KEY  (`cdFila`),
   KEY `FILA_FKIndex1` (`cdPaciente`),
   KEY `FILA_FKIndex2` (`cdEstabelecimento`)
@@ -199,6 +222,32 @@ CREATE TABLE /*!32312 IF NOT EXISTS*/ `fila` (
 # Dumping data for table 'fila'
 #
 
+/*!40000 ALTER TABLE `fila` DISABLE KEYS;*/
+LOCK TABLES `fila` WRITE;
+INSERT INTO `fila` (`cdFila`, `cdEstabelecimento`, `cdPaciente`, `dtFila`, `idStatus`) VALUES ('1','2','1','2006-12-02 19:22:00','E'),
+	('2','1','0',NULL,'E'),
+	('3','1','0','2006-12-02 18:00:00','E'),
+	('4','1','0','2006-12-02 18:00:00','E'),
+	('5','1','0','2006-12-02 18:03:00','E'),
+	('6','3','1',NULL,'M'),
+	('7','2','1','2006-12-02 19:22:00','E'),
+	('8','3','1','2006-12-02','M'),
+	('9','3','1','2006-12-02','M'),
+	('10','3','2','2006-12-02','M'),
+	('11','3','2','2006-12-02','M'),
+	('12','3','2','2006-12-02','C'),
+	('13','3','1','2006-12-02','M'),
+	('14','3','1','2006-12-02 18:54:00','C'),
+	('15','3','2','2006-12-02','C'),
+	('16','3','1',NULL,'M'),
+	('17','3','1','2006-12-02','M'),
+	('18','3','1','2006-12-02','M'),
+	('19','3','2','2006-12-02','M'),
+	('20','3','1','2006-12-14 20:22:00','E'),
+	('21','3','1','2006-12-14 20:24:00','E'),
+	('22','3','1','2006-12-14 20:27:00','E');
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `fila` ENABLE KEYS;*/
 
 
 #
@@ -226,7 +275,8 @@ CREATE TABLE /*!32312 IF NOT EXISTS*/ `paciente` (
 
 /*!40000 ALTER TABLE `paciente` DISABLE KEYS;*/
 LOCK TABLES `paciente` WRITE;
-REPLACE INTO `paciente` (`cdPaciente`, `cdDomicilio`, `nmPaciente`, `nmMae`, `dtNascimento`, `dsTelefoneCel`, `tpSexo`, `idStatus`) VALUES ('1','3','Daniel Camargo','Eloisa','1981-08-17','41 88065267','M','A');
+INSERT INTO `paciente` (`cdPaciente`, `cdDomicilio`, `nmPaciente`, `nmMae`, `dtNascimento`, `dsTelefoneCel`, `tpSexo`, `idStatus`) VALUES ('1','3','Daniel Camargo','Eloisa','1981-08-17','41 88065267','M','A'),
+	('2','4','Penélope Charmosa','Rebeca','1984-08-08','41 55555555','F','A');
 UNLOCK TABLES;
 /*!40000 ALTER TABLE `paciente` ENABLE KEYS;*/
 
@@ -251,7 +301,7 @@ CREATE TABLE /*!32312 IF NOT EXISTS*/ `procedimento` (
 
 /*!40000 ALTER TABLE `procedimento` DISABLE KEYS;*/
 LOCK TABLES `procedimento` WRITE;
-REPLACE INTO `procedimento` (`cdProcedimento`, `dsProcedimento`, `idStatus`) VALUES ('1','Administracao de Medicamentos por paciente','A'),
+INSERT INTO `procedimento` (`cdProcedimento`, `dsProcedimento`, `idStatus`) VALUES ('1','Administracao de Medicamentos por paciente','A'),
 	('2','Atendimento de paciente portador de diabetes','A'),
 	('3','Curativo por paciente','A'),
 	('4','Amputacao por membro por dedo','A'),
@@ -282,7 +332,7 @@ CREATE TABLE /*!32312 IF NOT EXISTS*/ `profissao` (
 
 /*!40000 ALTER TABLE `profissao` DISABLE KEYS;*/
 LOCK TABLES `profissao` WRITE;
-REPLACE INTO `profissao` (`cdProfissao`, `dsProfissao`, `dsConselho`, `idStatus`) VALUES ('4','Medico','5419','A'),
+INSERT INTO `profissao` (`cdProfissao`, `dsProfissao`, `dsConselho`, `idStatus`) VALUES ('4','Medico','5419','A'),
 	('5','Enfermeiro','54269','A'),
 	('6','Açougueiro','2424','I');
 UNLOCK TABLES;
@@ -316,6 +366,7 @@ CREATE TABLE /*!32312 IF NOT EXISTS*/ `profissional` (
 
 /*!40000 ALTER TABLE `profissional` DISABLE KEYS;*/
 LOCK TABLES `profissional` WRITE;
-REPLACE INTO `profissional` (`cdProfissional`, `cdProfissao`, `dsLogin`, `dsSenha`, `nmProfissional`, `dtNascimento`, `dsCPF`, `nmMae`, `tpSexo`, `idStatus`) VALUES ('9','4','daniel','danie','Daniel Pereira Camargo','1981-08-17','03187592929','Eloisa de Fátima Pereira Camargo','M','A');
+INSERT INTO `profissional` (`cdProfissional`, `cdProfissao`, `dsLogin`, `dsSenha`, `nmProfissional`, `dtNascimento`, `dsCPF`, `nmMae`, `tpSexo`, `idStatus`) VALUES ('9','4','daniel','danie','Daniel Pereira Camargo','1981-08-17','03187592929','Eloisa de Fátima Pereira Camargo','M','A'),
+	('10','4','rkloss','123','Rafael Kloss','1981-08-18','7531526-0','Almira Oliveira Kloss','M','A');
 UNLOCK TABLES;
 /*!40000 ALTER TABLE `profissional` ENABLE KEYS;*/

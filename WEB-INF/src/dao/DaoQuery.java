@@ -13,6 +13,9 @@ import modelo.Estabelecimento;
 import modelo.Procedimento;
 import modelo.Domicilio;
 import modelo.Profissional;
+import modelo.Fila;
+import modelo.Atendimento;
+
 
 /**
  *<b>Nome: </b>DaoQuery<br>
@@ -34,10 +37,14 @@ public class DaoQuery extends SuperDao {
 		ArrayList cidByDsCid = new ArrayList();
 		StringBuffer query = new StringBuffer();
 		query.append("select * from CID ");
-		if(!"*".trim().equals(dsCid))
+		if(!"*".trim().equals(dsCid) && !"|s|".trim().equals(dsCid))
 		{
 			query.append(" where dsCid ");
 			query.append("like '%"+dsCid+"%'");
+		}
+		if("|s|".trim().equals(dsCid) )
+		{
+			query.append(" where idStatus = 'A' ");
 		}
 		query.append(" order by dsCid");
 		res = super.executeQuery(query.toString());
@@ -260,14 +267,18 @@ public class DaoQuery extends SuperDao {
 		super.desconecta();
 		return profissional;
 	}
-	public ArrayList profissionalByNmProfissional(String dsLogradouro) throws Exception{
+	public ArrayList profissionalByNmProfissional(String nmProfissional) throws Exception{
 		ArrayList profissionalByDsProfissional = new ArrayList();
 		StringBuffer query = new StringBuffer();
 		query.append("select * from PROFISSIONAL ");
-		if(!"*".trim().equals(dsLogradouro))
+		if(!"*".trim().equals(nmProfissional) && !"|s|".trim().equals(nmProfissional))
 		{
 			query.append(" where nmProfissional ");
-			query.append("like '%"+dsLogradouro+"%'");
+			query.append("like '%"+nmProfissional+"%'");
+		}
+		if("|s|".trim().equals(nmProfissional) )
+		{
+			query.append(" where idStatus = 'A' ");
 		}
 		query.append(" order by nmProfissional");
 		res = super.executeQuery(query.toString());
@@ -287,7 +298,6 @@ public class DaoQuery extends SuperDao {
 		Paciente paciente = new Paciente();
 		if(res.next())
 		{
-			Data data = new Data();
 			paciente.setCdPaciente(res.getInt("cdPaciente"));
 			Domicilio domicilio;
 			paciente.setDsTelefoneCel(res.getString("dsTelefoneCel"));
@@ -302,14 +312,18 @@ public class DaoQuery extends SuperDao {
 		super.desconecta();
 		return paciente;
 	}
-	public ArrayList pacienteByNmPaciente(String dsLogradouro) throws Exception{
+	public ArrayList pacienteByNmPaciente(String nmPaciente) throws Exception{
 		ArrayList pacienteByDsPaciente = new ArrayList();
 		StringBuffer query = new StringBuffer();
 		query.append("select * from PACIENTE ");
-		if(!"*".trim().equals(dsLogradouro))
+		if(!"*".trim().equals(nmPaciente) && !"|s|".trim().equals(nmPaciente))
 		{
 			query.append(" where nmPaciente ");
-			query.append("like '%"+dsLogradouro+"%'");
+			query.append("like '%"+nmPaciente+"%'");
+		}
+		if("|s|".trim().equals(nmPaciente) )
+		{
+			query.append(" where idStatus = 'A' ");
 		}
 		query.append(" order by nmPaciente");
 		res = super.executeQuery(query.toString());
@@ -322,5 +336,66 @@ public class DaoQuery extends SuperDao {
 		}
 		super.desconecta();
 		return pacienteByDsPaciente;
+	}
+	public ArrayList pacientesNaFila(int cdEstabelecimento, String idStatus) throws Exception{
+		ResultSet resultInterno;
+		ArrayList pacientesNaFila = new ArrayList();
+		StringBuffer query = new StringBuffer();
+		query.append("select *, DATE_FORMAT(dtFila,'%d/%m/%Y - %H:%i:%s') as dtFilaFormatada from FILA where cdEstabelecimento ='"+cdEstabelecimento+"' AND idStatus='"+idStatus+"'");
+		query.append(" order by cdFila ASC");
+		resultInterno = super.executeQuery(query.toString());
+		while(resultInterno.next()){
+			Fila fila = new Fila();
+			fila.setCdFila(resultInterno.getInt("cdFila"));
+			fila.setPaciente(pacienteById(resultInterno.getInt("cdPaciente")));
+			fila.setEstabelecimento(estabelecimentoById(resultInterno.getInt("cdEstabelecimento")));
+			fila.setDtFila(resultInterno.getString("dtFilaFormatada"));
+			fila.setIdStatus(resultInterno.getString("idStatus"));
+			pacientesNaFila.add(fila);
+		}
+		super.desconecta();
+		return pacientesNaFila;
+	}
+	public Fila filaById(int cdFila) throws Exception
+	{
+		ResultSet resultInterno;
+		resultInterno = super.executeQuery("select *, DATE_FORMAT(dtFila,'%d/%m/%Y - %H:%i:%s') as dtFilaFormatada from FILA where cdFila = " + cdFila);
+		Fila fila = new Fila();
+		if(resultInterno.next())
+		{
+			fila.setCdFila(resultInterno.getInt("cdFila"));
+			fila.setIdStatus(resultInterno.getString("idStatus"));
+			fila.setDtFila(resultInterno.getString("dtFilaFormatada"));
+			Paciente paciente = pacienteById(resultInterno.getInt("cdPaciente"));
+			Estabelecimento estabelecimento = estabelecimentoById(resultInterno.getInt("cdEstabelecimento"));
+			fila.setEstabelecimento(estabelecimento);
+			fila.setPaciente(paciente);
+		}
+		super.desconecta();
+		return fila;
+	}
+	public ArrayList atendimentoByPaciente(int cdPaciente) throws Exception{
+		ResultSet resultInterno;
+		ArrayList atendimentos = new ArrayList();
+		StringBuffer query = new StringBuffer();
+		query.append("select *, DATE_FORMAT(dtAtendimento,'%d/%m/%Y - %H:%i:%s') as dtAtendimentoFormatada from ATENDIMENTO where cdPaciente ='"+cdPaciente+"'");
+		query.append(" order by cdAtendimento DESC");
+		resultInterno = super.executeQuery(query.toString());
+		while(resultInterno.next()){
+			Atendimento atendimento = new Atendimento();
+			atendimento.setCdAtendimento(resultInterno.getInt("cdAtendimento"));
+			atendimento.setEstabelecimento(this.estabelecimentoById(resultInterno.getInt("cdEstabelecimento")));
+			atendimento.setPaciente(this.pacienteById(resultInterno.getInt("cdPaciente")));
+			atendimento.setProfissional(this.profissionalById(resultInterno.getInt("cdProfissional")));
+			atendimento.setProcedimento(this.procedimentoById(resultInterno.getInt("cdProcedimento")));
+			atendimento.setCid(this.cidById(resultInterno.getInt("cdCid")));
+			atendimento.setDtAtendimento(resultInterno.getString("dtAtendimentoFormatada"));
+			atendimento.setDsAtendimento(resultInterno.getString("dsAtendimento"));
+			atendimento.setTpConsulta(resultInterno.getString("tpConsulta"));
+			atendimento.setDsQueixa(resultInterno.getString("dsQueixa"));
+			atendimentos.add(atendimento);
+		}
+		super.desconecta();
+		return atendimentos;
 	}
 }

@@ -1,35 +1,25 @@
 package modelo;
 
-public class FilaAtendimento {
-	private int cdFilaAtendimento;
+public class Fila {
+	private int cdFila;
 	private Paciente paciente;
 	private Estabelecimento estabelecimento;
 	private String dtFila;
-	private int cdStatus;
+	private String idStatus;
 	/* Status da fila (cdStatus):
 	 * 1 - Fila de atendimento de enfermagem;
 	 * 2 - Fila de atendimento médico;
 	 * 3 - Concluído. */
 	
-	public FilaAtendimento(){		
+	public Fila(){		
 	}
 
-	public int getCdFilaAtendimento() {
-		return cdFilaAtendimento;
+	public int getCdFila() {
+		return cdFila;
 	}
 
-	public void setCdFilaAtendimento(int cdFilaAtendimento) {
-		this.cdFilaAtendimento = cdFilaAtendimento;
-	}
-
-	/**
-	 * <b>Status da fila (cdStatus):</b><br>
-	 * 1 - Fila de atendimento de enfermagem;<br>
-	 * 2 - Fila de atendimento médico;<br>
-	 * 3 - Concluído.
-	 */
-	public int getCdStatus() {
-		return cdStatus;
+	public void setCdFila(int cdFila) {
+		this.cdFila = cdFila;
 	}
 
 	/**
@@ -38,8 +28,18 @@ public class FilaAtendimento {
 	 * 2 - Fila de atendimento médico;<br>
 	 * 3 - Concluído.
 	 */
-	public void setCdStatus(int cdStatus) {
-		this.cdStatus = cdStatus;
+	public String getIdStatus() {
+		return idStatus;
+	}
+
+	/**
+	 * <b>Status da fila (IdStatus):</b><br>
+	 * 1 - Fila de atendimento de enfermagem;<br>
+	 * 2 - Fila de atendimento médico;<br>
+	 * 3 - Concluído.
+	 */
+	public void setIdStatus(String IdStatus) {
+		this.idStatus = IdStatus;
 	}
 
 	public String getDtFila() {

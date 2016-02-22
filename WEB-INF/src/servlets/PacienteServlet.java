@@ -183,6 +183,10 @@ import dao.DaoUpdate;
 			 	if("I".equals(paciente.getIdStatus()))
 			 		formulario.append(" selected ");
 			 	formulario.append(">Inativo</option>");
+			 	formulario.append("<option value='O'");
+			 	if("O".equals(paciente.getIdStatus()))
+			 		formulario.append(" selected ");
+			 	formulario.append(">Óbito</option>");
 			 	formulario.append("</select>");
 			 formulario.append("</td>");
 			 formulario.append("</tr>");
