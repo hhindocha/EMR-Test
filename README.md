@@ -1,2 +1,2 @@
 Electronic medical records
-built in Java using Servelets
+built in Java using Servlets
