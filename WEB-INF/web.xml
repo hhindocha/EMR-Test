@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+    version="2.4">
+    <description>
+      BETA TESTE
+    </description>
+    <display-name>BETA TESTE</display-name>
+
+    <servlet>
+		<servlet-name>CidServlet</servlet-name>
+		<servlet-class>servlets.CidServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+		<servlet-name>ProcedimentoServlet</servlet-name>
+		<servlet-class>servlets.ProcedimentoServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+		<servlet-name>ProfissaoServlet</servlet-name>
+		<servlet-class>servlets.ProfissaoServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+		<servlet-name>EstabelecimentoServlet</servlet-name>
+		<servlet-class>servlets.EstabelecimentoServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+		<servlet-name>DomicilioServlet</servlet-name>
+		<servlet-class>servlets.DomicilioServlet</servlet-class>
+    </servlet>
+
+	<servlet>
+		<servlet-name>ProfissionalServlet</servlet-name>
+		<servlet-class>servlets.ProfissionalServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>PacienteServlet</servlet-name>
+		<servlet-class>servlets.PacienteServlet</servlet-class>
+	</servlet>
+
+
+	<servlet-mapping>
+		<servlet-name>PacienteServlet</servlet-name>
+		<url-pattern>*.Paciente</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>ProfissionalServlet</servlet-name>
+		<url-pattern>*.Profissional</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet-mapping>
+		<servlet-name>CidServlet</servlet-name>
+		<url-pattern>*.Cid</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>ProcedimentoServlet</servlet-name>
+		<url-pattern>*.Procedimento</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>ProfissaoServlet</servlet-name>
+		<url-pattern>*.Profissao</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>EstabelecimentoServlet</servlet-name>
+		<url-pattern>*.Estabelecimento</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>DomicilioServlet</servlet-name>
+		<url-pattern>*.Domicilio</url-pattern>
+	</servlet-mapping>
+
+</web-app>
